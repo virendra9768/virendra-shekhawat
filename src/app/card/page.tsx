@@ -99,22 +99,14 @@ export default function BusinessCardPage() {
 
             </div>
 
-            <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="mt-6">
               <a
                 href="https://www.virendra-shekhawat.vercel.app"
                 target="_blank"
-                className="flex items-center justify-center gap-2 rounded-xl bg-[#c9a84c] px-4 py-3 text-sm font-medium text-black transition hover:opacity-90"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#c9a84c] px-4 py-3 text-sm font-medium text-black transition hover:opacity-90"
               >
                 <ExternalLink size={16} />
-                Portfolio
-              </a>
-              <a
-                href="https://wa.me/917073041088"
-                target="_blank"
-                className="flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-[#f0ece4]/80 transition hover:border-[#c9a84c]/40"
-              >
-                <Phone size={16} />
-                WhatsApp
+                View Portfolio
               </a>
             </div>
 
