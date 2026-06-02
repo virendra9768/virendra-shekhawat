@@ -116,7 +116,7 @@ export default function BusinessCardPage() {
 
             <div className="mt-6">
               <a
-                href="https://www.virendra-shekhawat.vercel.app"
+                href="/"
                 target="_blank"
                 className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#c9a84c] px-4 py-3 text-sm font-medium text-black transition hover:opacity-90"
               >
