@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { Mail, Phone, MapPin, ExternalLink, Copy } from "lucide-react";
 
@@ -14,9 +15,9 @@ export default function BusinessCardPage() {
 
           <div className="relative z-10 p-7">
 
-            <div className="flex justify-between gap-4 mb-6">
-
-              <div>
+            <div className="flex items-start justify-between gap-6 mb-6">
+              {/* LEFT SIDE */}
+              <div className="flex-1">
 
                 <div className="inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/30 bg-[#c9a84c]/10 px-3 py-1 text-xs text-[#c9a84c]">
                   <span className="h-2 w-2 rounded-full bg-green-400" />
@@ -31,15 +32,28 @@ export default function BusinessCardPage() {
                   </span>
                 </h1>
 
-                <p className="mt-4 max-w-[320px] text-sm leading-relaxed text-[#f0ece4]/50">
+                <p className="mt-4 max-w-[420px] text-sm leading-relaxed text-[#f0ece4]/50">
                   Helping businesses build modern websites
                   and web applications that look professional,
                   work flawlessly, and convert visitors into customers.
                 </p>
+
               </div>
 
-              <div className="flex h-[50px] w-[50px] items-center justify-center rounded-xl border border-[#c9a84c]/30 bg-[#c9a84c]/10 text-[#c9a84c]">
-                VSS
+              {/* RIGHT SIDE PHOTO */}
+              <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl border border-[#c9a84c]/20">
+
+                <Image
+                  src="/virendra.jpeg"
+                  alt="Virendra Singh Shekhawat"
+                  fill
+                  priority
+                  className="object-cover scale-250"
+                  style={{
+                    objectPosition: "center -30%",
+                  }}
+                />
+
               </div>
             </div>
 
