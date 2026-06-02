@@ -59,8 +59,8 @@ export default function BusinessCardPage() {
 
               <BenefitCard
                 icon="🤝"
-                title="Easy"
-                subtitle="Communication"
+                title="Quick"
+                subtitle="Response"
               />
 
             </div>
