@@ -41,16 +41,17 @@ export default function BusinessCardPage() {
               </div>
 
               {/* RIGHT SIDE PHOTO */}
-              <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl border border-[#c9a84c]/20">
+              <div className="relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-2xl border border-[#c9a84c]/20">
 
                 <Image
                   src="/virendra.jpeg"
                   alt="Virendra Singh Shekhawat"
                   fill
                   priority
-                  className="object-cover scale-250"
+                  className="object-cover"
                   style={{
                     objectPosition: "center -30%",
+                    transform: "scale(2.5)",
                   }}
                 />
 
