@@ -32,9 +32,9 @@ export default function BusinessCardPage() {
                 </h1>
 
                 <p className="mt-4 max-w-[320px] text-sm leading-relaxed text-[#f0ece4]/50">
-                  I build websites and web apps that are
-                  fast, easy to manage, and bring in
-                  customers.
+                  Helping businesses build modern websites
+                  and web applications that look professional,
+                  work flawlessly, and convert visitors into customers.
                 </p>
               </div>
 
@@ -45,11 +45,23 @@ export default function BusinessCardPage() {
 
             <div className="grid grid-cols-3 gap-2">
 
-              <Stat value="5+" label="Years Exp." />
+              <BenefitCard
+                icon="⚡"
+                title="Fast"
+                subtitle="Delivery"
+              />
 
-              <Stat value="3" label="Companies" />
+              <BenefitCard
+                icon="📱"
+                title="Mobile"
+                subtitle="Friendly"
+              />
 
-              <Stat value="10+" label="Projects" />
+              <BenefitCard
+                icon="🤝"
+                title="Easy"
+                subtitle="Communication"
+              />
 
             </div>
 
@@ -88,7 +100,6 @@ export default function BusinessCardPage() {
             </div>
 
             <div className="mt-6 grid grid-cols-2 gap-3">
-
               <a
                 href="https://www.virendra-shekhawat.vercel.app"
                 target="_blank"
@@ -97,7 +108,6 @@ export default function BusinessCardPage() {
                 <ExternalLink size={16} />
                 Portfolio
               </a>
-
               <a
                 href="https://wa.me/917073041088"
                 target="_blank"
@@ -106,7 +116,6 @@ export default function BusinessCardPage() {
                 <Phone size={16} />
                 WhatsApp
               </a>
-
             </div>
 
             <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-5">
@@ -133,21 +142,27 @@ export default function BusinessCardPage() {
   );
 }
 
-function Stat({
-  value,
-  label,
+function BenefitCard({
+  icon,
+  title,
+  subtitle,
 }: {
-  value: string;
-  label: string;
+  icon: string;
+  title: string;
+  subtitle: string;
 }) {
   return (
     <div className="rounded-xl border border-white/10 bg-white/5 p-3 text-center">
-      <div className="text-xl font-medium text-[#c9a84c]">
-        {value}
+      <div className="text-lg mb-1">
+        {icon}
       </div>
 
-      <div className="mt-1 text-[10px] uppercase tracking-wider text-[#f0ece4]/30">
-        {label}
+      <div className="text-xs font-medium text-[#c9a84c]">
+        {title}
+      </div>
+
+      <div className="text-[10px] uppercase tracking-wider text-[#f0ece4]/30">
+        {subtitle}
       </div>
     </div>
   );
