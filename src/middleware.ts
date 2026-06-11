@@ -5,7 +5,7 @@ export function middleware(request: NextRequest) {
 
   if (host.startsWith("hire.")) {
     return NextResponse.redirect(
-      new URL("/hire/index.html", request.url)
+      "https://virendrashekhawat.com/hire/index.html"
     );
   }
 
