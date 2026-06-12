@@ -1,5 +1,14 @@
-import { redirect } from "next/navigation";
-
 export default function HirePage() {
-  redirect("/hire/index.html");
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "grid",
+        placeItems: "center",
+        fontSize: "48px",
+      }}
+    >
+      HIRE PAGE WORKING
+    </div>
+  );
 }
