@@ -1,14 +1,12 @@
 export default function HirePage() {
   return (
-    <div
+    <iframe
+      src="/hire/index.html"
       style={{
-        minHeight: "100vh",
-        display: "grid",
-        placeItems: "center",
-        fontSize: "48px",
+        width: "100%",
+        height: "100vh",
+        border: "none",
       }}
-    >
-      HIRE PAGE WORKING
-    </div>
+    />
   );
 }
