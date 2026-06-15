@@ -25,27 +25,45 @@ const SKILLS = [
 const SERVICES = [
   {
     num: "01",
-    title: "Backend APIs",
-    short: "APIs that don't break when traffic hits",
+    title: "Complex API Integrations & Compliance",
+    short: "OAuth 2.0 · Webhooks · SFTP Pipelines",
     detail:
-      "You get a backend that holds up in production — not just in development. I design the schema, auth layer, and module structure upfront so the codebase doesn't become a liability six months later. Built on NestJS or Node.js with clean separation of concerns, proper error handling, and documentation your frontend team can actually use.",
-    deliverables: ["NestJS / Express.js", "PostgreSQL · MySQL · MongoDB", "JWT & RBAC", "Third-party integrations", "API documentation"],
+      "End-to-end architecture for strict third-party integrations — including platforms like Reserve with Google that have formal partner compliance requirements. I handle the full surface area: OAuth 2.0 authentication flows, automated data feed pipelines over SFTP, real-time webhook synchronization, and idempotent handlers that survive retries without corrupting state.",
+    deliverables: [
+      "OAuth 2.0 / token management",
+      "Automated SFTP feed pipelines",
+      "Real-time webhook handlers",
+      "Compliance documentation support",
+      "End-to-end integration testing",
+    ],
   },
   {
     num: "02",
-    title: "Full Stack Web Apps",
-    short: "Database to UI, one developer, no handoff gaps",
+    title: "SaaS Architecture & Backend Refactoring",
+    short: "NestJS · Node.js · PostgreSQL",
     detail:
-      "Most projects slow down at the seam between frontend and backend. With one developer owning both, that gap disappears. Next.js App Router on the frontend, a real production backend behind it, TypeScript throughout — shipped to Vercel or your own server with auth, user management, and performance dialled in from day one.",
-    deliverables: ["Next.js 15 App Router", "Tailwind CSS · TypeScript", "Auth & user management", "Vercel / VPS deployment", "Performance optimised"],
+      "Transitioning brittle codebases into clean, maintainable three-layer architectures — Controller, Service, Repository — using Node.js, NestJS, and PostgreSQL. Whether you're starting a new SaaS or inheriting a monolith that no one wants to touch, I design backends that the next engineer can actually reason about.",
+    deliverables: [
+      "Three-layer architecture design",
+      "NestJS module restructuring",
+      "PostgreSQL schema design",
+      "RBAC & access control",
+      "API contract documentation",
+    ],
   },
   {
     num: "03",
-    title: "Business Websites",
-    short: "Sites built to convert, not just to look good",
+    title: "Dynamic Data & Scheduling Engines",
+    short: "Scheduling · AWS S3 · Concurrency",
     detail:
-      "A site that looks great but doesn't bring in customers is just an expensive brochure. I build for clinics, studios, and service businesses that need appointment booking, Google Reviews, WhatsApp integration, and fast load times on mobile — the things that turn a visitor into a call.",
-    deliverables: ["Appointment booking", "WhatsApp + Maps + Reviews", "On-page SEO", "Mobile-first design", "Fast load times"],
+      "Building the logic-heavy backend systems that off-the-shelf tools can't handle: concurrent multi-user booking algorithms, dynamic availability slot generators with per-resource overrides, and secure document storage on AWS S3 with pre-signed URLs and IAM-based access control. The kind of work where correctness under load actually matters.",
+    deliverables: [
+      "Multi-doctor / multi-resource scheduling",
+      "Conflict-free concurrency logic",
+      "Dynamic slot generation engine",
+      "AWS S3 + pre-signed URL integration",
+      "Access-controlled document storage",
+    ],
   },
 ];
 
@@ -106,35 +124,109 @@ const ADDONS = [
 const PROJECTS = [
   {
     index: "01",
-    name: "NovaCare Clinic",
-    category: "Healthcare · Business Website",
-    headline: "A premium clinic site built to convert visitors into booked appointments.",
+    category: "API Integration · Production",
+    accent: "#C8922A",
+    accentDim: "rgba(200,146,42,0.08)",
+    accentBorder: "rgba(200,146,42,0.2)",
+    name: "Reserve with Google Integration",
+    headline: "Direct bookings from Google Search and Maps — engineered end-to-end.",
     description:
-      "Built for a general medicine practice. Includes Google Reviews integration, WhatsApp CTA, appointment booking form, specialisation listing, and SEO-optimised structure. Designed to work for any clinic or doctor's practice.",
-    tags: ["Next.js", "Tailwind CSS", "SEO", "Booking Form", "WhatsApp"],
-    url: "https://sample-clinic-website-iota.vercel.app/",
-    label: "Live Demo",
-    accent: "#4A9B7F",
-    accentDim: "rgba(74,155,127,0.08)",
-    accentBorder: "rgba(74,155,127,0.2)",
-    bg: "#0A0F0D",
-    descriptor: "Healthcare",
+      "Architected a full Google Partner integration enabling restaurant table bookings from Google Search and Maps. Five phases: Partner onboarding, automated SFTP data pipelines, core Booking APIs, a real-time update engine, and a rigorous sandbox validation before production go-live.",
+    tags: ["Node.js", "REST APIs", "OAuth 2.0", "SFTP", "PostgreSQL", "Webhooks"],
+    url: "#contact",
+    label: "Discuss a Similar Integration",
+    visual: "casestudy",
+    caseStudy: {
+      role: "Lead Backend Engineer · Restaurant Management SaaS",
+      phases: [
+        {
+          num: "01",
+          title: "Partner Onboarding & Infrastructure",
+          points: [
+            "Registered platform as an official Google Partner aggregator",
+            "Configured production API keys, generated SSH keys",
+            "Provisioned secure SFTP dropboxes on Google's servers",
+          ],
+        },
+        {
+          num: "02",
+          title: "Automated Data Sync Pipeline",
+          points: [
+            "Merchant Feed — business profiles and operational data",
+            "Services Feed — reservation types and offerings",
+            "Availability Feed — live table slots by time interval and party size",
+            "Cron-driven SFTP upload on a strict 24-hour cycle",
+          ],
+        },
+        {
+          num: "03",
+          title: "Core Booking API Surface",
+          points: [
+            "batchAvailabilityLookup — high-volume real-time slot verification",
+            "CreateBooking — instant reservation creation in PostgreSQL",
+            "UpdateBooking — modifications and cancellations from Google UI",
+          ],
+        },
+        {
+          num: "04",
+          title: "Real-Time Update Engine",
+          points: [
+            "Webhook-based RTU payloads fired on every internal state change",
+            "Prevented race conditions and double-bookings between batch cycles",
+          ],
+        },
+        {
+          num: "05",
+          title: "Sandbox Validation & Go-Live",
+          points: [
+            "100% feed uptime over a continuous 3-day rolling window",
+            "14+ successful API calls across all endpoints — zero failures",
+            "14+ RTU calls validated in simulation",
+            "Passed Google's final production verification",
+          ],
+        },
+      ],
+    },
   },
   {
     index: "02",
-    name: "The Wood Room",
-    category: "Luxury Furniture · Brand Website",
-    headline: "A bespoke interior design studio site built for high-end client acquisition.",
+    category: "Client Project · Dev Technosys",
+    accent: "#5BAF7A",
+    accentDim: "rgba(91,175,122,0.08)",
+    accentBorder: "rgba(91,175,122,0.2)",
+    name: "Healthcare Scheduling Engine",
+    headline: "Backend engineering delivered for a live healthcare SaaS client.",
     description:
-      "Built for a luxury furniture and interior design brand. Showcases collections, craftsmanship story, and consultation booking — with a dark, editorial aesthetic that reflects the brand's identity and commands premium positioning.",
-    tags: ["Next.js", "Tailwind CSS", "Framer Motion", "Brand Identity", "Collections"],
-    url: "https://the-wood-room.vercel.app/",
-    label: "Live Demo",
-    accent: "#B8922A",
-    accentDim: "rgba(184,146,42,0.08)",
-    accentBorder: "rgba(184,146,42,0.2)",
-    bg: "#0D0B09",
-    descriptor: "Interior Design",
+      "Built at Dev Technosys for the Doctolink client — engineered the core scheduling system: a dynamic slot generator handling concurrent multi-doctor bookings with complex availability windows — recurring days-off, per-doctor buffer times, and real-time conflict resolution. Also integrated AWS S3 document storage with pre-signed URLs and IAM access control policies for sensitive patient records.",
+    tags: ["NestJS", "MySQL", "AWS S3", "React.js", "IAM", "Pre-signed URLs"],
+    url: "https://doctolinkapp.com",
+    label: "View Client Product",
+    visual: "iframe",
+    caseStudy: null,
+  },
+  {
+    index: "03",
+    category: "SaaS MVP · In Development",
+    accent: "#7B8FE8",
+    accentDim: "rgba(123,143,232,0.08)",
+    accentBorder: "rgba(123,143,232,0.2)",
+    name: "QRvana — Multi-Tenant QR SaaS",
+    headline: "Independently architecting a production-grade SaaS from schema to deployment.",
+    description:
+      "Building a multi-tenant QR code platform from the ground up — independently owning every layer. Designed a 14-table Postgres schema with workspace-level isolation, NextAuth v5 auth with email and OAuth flows, a versioned REST API contract, and a full 76-component design system.",
+    tags: ["Next.js", "PostgreSQL", "Drizzle ORM", "NextAuth v5", "Stripe", "Vercel"],
+    url: "#contact",
+    label: "Ask About the Architecture",
+    visual: "wip",
+    wipProgress: [
+      { label: "DB Schema (14 tables)", pct: 95 },
+      { label: "Auth Flows (NextAuth v5)", pct: 80 },
+      { label: "API Contract (v1/)", pct: 65 },
+      { label: "QR Generator Engine", pct: 50 },
+      { label: "Billing / Stripe", pct: 25 },
+      { label: "Public Launch", pct: 10 },
+    ],
+    caseStudy: null,
   },
 ];
 
@@ -155,43 +247,83 @@ const CONTACT_DETAILS = [
 const EXPERIENCE = [
   {
     company: "Jiak Technology",
-    role: "Senior Software Engineer",
-    period: "2025",
-    type: "Product",
-    location: "Singapore",
-    detail: "Restaurant management SaaS — multi-tenant platform, analytics APIs, digital menus, floorplan management, RBAC.",
+    type: "Full-time",
+    location: "Singapore (Remote)",
+    role: "Full-Stack Engineer",
+    period: "2023 — 2024",
+    detail:
+      "Led the Reserve with Google integration end-to-end — Google Partner onboarding, automated SFTP feed pipelines, core Booking APIs, and a real-time update engine. Also built JWT authentication from scratch and owned the PostgreSQL schema across the platform.",
   },
   {
     company: "Dev Technosys",
-    role: "Full Stack Developer",
-    period: "2021 — 2025",
-    type: "Agency",
+    type: "Full-time",
     location: "Jaipur",
-    detail: "Client-facing product agency — backend systems, REST APIs, database design across multiple parallel projects.",
+    role: "Full-Stack Developer",
+    period: "2022 — 2023",
+    detail:
+      "Sole engineer on Google OAuth and Google Reserve API integrations. Built and shipped Node.js REST APIs and React frontends across multiple client projects with direct ownership of the full delivery cycle.",
+  },
+  {
+    company: "Doctolink",
+    type: "Full-time",
+    location: "Jaipur",
+    role: "Backend Developer",
+    period: "2021 — 2022",
+    detail:
+      "Engineered a concurrent multi-doctor scheduling engine with dynamic slot generation and conflict resolution. Integrated AWS S3 with pre-signed URLs and IAM-based access control for patient document storage. Stack: NestJS, MySQL, React.js.",
   },
   {
     company: "Webdunia",
-    role: "Associate Software Engineer",
-    period: "2019 — 2020",
-    type: "Media",
-    location: "Indore",
-    detail: "High-traffic media platform — frontend work, content systems, performance optimisation.",
+    type: "Full-time",
+    location: "Jaipur",
+    role: "Junior Developer",
+    period: "2020 — 2021",
+    detail:
+      "Built and maintained client-facing web products. First production exposure to Node.js backends and React frontends at scale.",
   },
 ];
 
 const STACK = [
-  { category: "Backend", items: ["Node.js", "NestJS", "Express.js", "TypeScript"] },
-  { category: "Database", items: ["PostgreSQL", "MySQL", "MongoDB", "REST APIs"] },
-  { category: "Frontend", items: ["React.js", "Next.js", "Tailwind CSS", "AWS S3"] },
-  { category: "Tooling", items: ["JWT Auth", "Docker", "Git", "Vercel"] },
+  {
+    category: "Backend",
+    items: ["Node.js", "NestJS", "Express", "REST APIs", "Webhooks"],
+  },
+  {
+    category: "Frontend",
+    items: ["React.js", "Next.js", "TypeScript", "Tailwind CSS"],
+  },
+  {
+    category: "Database",
+    items: ["PostgreSQL", "MySQL", "Prisma", "Drizzle ORM", "Redis"],
+  },
+  {
+    category: "Auth & Security",
+    items: ["JWT", "OAuth 2.0", "NextAuth v5", "RBAC", "SSH / SFTP"],
+  },
+  {
+    category: "Cloud & Infra",
+    items: ["AWS S3", "IAM Policies", "Vercel", "Railway", "GitHub CI"],
+  },
+  {
+    category: "Integrations",
+    items: ["Reserve with Google", "Google APIs", "Stripe", "Resend", "S3 Pre-signed URLs"],
+  },
+  {
+    category: "Architecture",
+    items: ["Controller–Service–Repository", "Multi-tenancy", "Cron Pipelines", "Event-driven"],
+  },
+  {
+    category: "Currently Building",
+    items: ["QRvana SaaS", "Drizzle ORM", "Next.js 15 App Router", "Supabase"],
+  },
 ];
 
 const ROLES = [
-  "Node.js Engineer",
-  "NestJS Architect",
-  "Full Stack Developer",
-  "API Designer",
-  "Next.js Builder",
+  "Senior Backend Engineer",
+  "Node.js Specialist",
+  "NestJS Specialist",
+  "API Integration Architect",
+  "SaaS Backend Developer",
 ];
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

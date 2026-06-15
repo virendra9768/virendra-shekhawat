@@ -68,18 +68,19 @@ export default function AboutSection() {
           <FadeIn direction="right" delay={0.1}>
             <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
               <p style={{ color: "#C4B8AA", fontSize: "clamp(0.9rem, 1.4vw, 1rem)", lineHeight: 1.85, margin: 0 }}>
-                Full stack JavaScript developer with 5+ years of production
-                experience — from REST APIs and database schemas to React
-                frontends and client-facing business sites.
+                Senior full-stack JavaScript developer with 5+ years of production
+                experience — specializing in complex API integrations, scalable SaaS
+                backends, and high-performance Node.js systems.
               </p>
               <p style={{ color: "#B0A090", fontSize: "clamp(0.9rem, 1.4vw, 1rem)", lineHeight: 1.85, margin: 0 }}>
-                Previously at Webdunia, Dev Technosys, and Jiak Technology.
-                Now freelancing independently, taking on small to mid-scale
-                projects for startups and businesses.
+                Previously at Webdunia, Dev Technosys, and Jiak Technology (Singapore).
+                I&apos;ve shipped a live Reserve with Google integration, engineered
+                concurrent multi-doctor scheduling engines, and built secure AWS S3
+                document pipelines — all independently owned and delivered to production.
               </p>
               <p style={{ color: "#9A8E84", fontSize: "clamp(0.9rem, 1.4vw, 1rem)", lineHeight: 1.85, margin: 0 }}>
-                I care about clean architecture, clear communication, and
-                shipping things that actually hold up in production.
+                I care about clean architecture, clear communication, and shipping
+                things that actually hold up in production.
               </p>
             </div>
           </FadeIn>
@@ -106,7 +107,7 @@ export default function AboutSection() {
                   textTransform: "uppercase",
                 }}
               >
-                Where I've shipped
+                Where I&apos;ve shipped
               </span>
               <span style={{ flex: 1, height: 1, background: "#1E1B18" }} />
             </div>
@@ -199,7 +200,7 @@ export default function AboutSection() {
                         {exp.location}
                       </span>
                     </div>
-                    {/* Detail — the key readability fix */}
+                    {/* Detail */}
                     <span
                       style={{
                         fontFamily: "'DM Mono', monospace",

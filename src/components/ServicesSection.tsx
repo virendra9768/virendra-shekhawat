@@ -72,7 +72,7 @@ export default function ServicesSection() {
               }}
             >
               Three types of engagements, each with a defined scope and output.
-              No vague retainers, no scope creep. You know what you're getting
+              No vague retainers, no scope creep. You know what you&apos;re getting
               before we start.
             </p>
           </FadeIn>

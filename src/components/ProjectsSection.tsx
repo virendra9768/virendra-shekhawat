@@ -3,6 +3,549 @@
 import { PROJECTS } from "@/utils/common";
 import { useEffect, useState, useCallback } from "react";
 
+// ─── Right-panel visuals ──────────────────────────────────────────────────────
+
+function CaseStudyVisual({ p }: { p: typeof PROJECTS[0] }) {
+  const [openPhase, setOpenPhase] = useState<number>(0);
+  const cs = p.caseStudy!;
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        borderRadius: 8,
+        overflow: "hidden",
+        border: "1px solid #1E1B18",
+        background: "#0D0B09",
+        boxShadow: "0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02)",
+      }}
+    >
+      {/* Chrome bar */}
+      <div
+        style={{
+          background: "#141210",
+          padding: "10px 16px",
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          borderBottom: "1px solid #1E1B18",
+        }}
+      >
+        <div style={{ display: "flex", gap: 6 }}>
+          {["#FF5F56", "#FFBD2E", "#27C93F"].map((c) => (
+            <div
+              key={c}
+              style={{ width: 9, height: 9, borderRadius: "50%", background: c, opacity: 0.45 }}
+            />
+          ))}
+        </div>
+        <div
+          style={{
+            flex: 1,
+            background: "#0D0B09",
+            border: "1px solid #1E1B18",
+            borderRadius: 3,
+            padding: "4px 12px",
+            fontSize: 10,
+            color: "#8A7E74",
+            fontFamily: "'DM Mono', monospace",
+            textAlign: "center",
+            letterSpacing: "0.04em",
+          }}
+        >
+          case-study · reserve-with-google
+        </div>
+      </div>
+
+      {/* Case study content */}
+      <div style={{ padding: "20px 20px 24px" }}>
+        {/* Role badge */}
+        <p
+          style={{
+            fontFamily: "'DM Mono', monospace",
+            fontSize: 10,
+            color: p.accent,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            marginBottom: 16,
+          }}
+        >
+          {cs.role}
+        </p>
+
+        {/* Phase accordion */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          {cs.phases.map((phase, i) => {
+            const isOpen = openPhase === i;
+            return (
+              <div
+                key={phase.num}
+                style={{
+                  border: "1px solid",
+                  borderColor: isOpen ? p.accentBorder : "#1E1B18",
+                  borderRadius: 4,
+                  background: isOpen ? p.accentDim : "transparent",
+                  transition: "all 0.2s ease",
+                  overflow: "hidden",
+                }}
+              >
+                <button
+                  onClick={() => setOpenPhase(isOpen ? -1 : i)}
+                  style={{
+                    width: "100%",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "10px 14px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    textAlign: "left",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "'DM Mono', monospace",
+                      fontSize: 9,
+                      color: isOpen ? p.accent : "#7A6E65",
+                      letterSpacing: "0.1em",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {phase.num}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "'DM Mono', monospace",
+                      fontSize: 11,
+                      color: isOpen ? "#F0EBE3" : "#9A8E84",
+                      letterSpacing: "0.04em",
+                      flex: 1,
+                    }}
+                  >
+                    {phase.title}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "'DM Mono', monospace",
+                      fontSize: 14,
+                      color: isOpen ? p.accent : "#3A3430",
+                      transform: isOpen ? "rotate(45deg)" : "none",
+                      transition: "transform 0.2s ease, color 0.2s",
+                      display: "inline-block",
+                      flexShrink: 0,
+                    }}
+                  >
+                    +
+                  </span>
+                </button>
+
+                <div
+                  style={{
+                    maxHeight: isOpen ? 300 : 0,
+                    overflow: "hidden",
+                    transition: "max-height 0.35s cubic-bezier(0.22,1,0.36,1)",
+                  }}
+                >
+                  <ul
+                    style={{
+                      margin: 0,
+                      padding: "0 14px 12px 38px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 7,
+                    }}
+                  >
+                    {phase.points.map((pt) => (
+                      <li
+                        key={pt}
+                        style={{
+                          fontFamily: "'DM Mono', monospace",
+                          fontSize: 11,
+                          color: "#C4B8AA",
+                          lineHeight: 1.6,
+                          listStyle: "none",
+                          position: "relative",
+                        }}
+                      >
+                        <span
+                          style={{
+                            position: "absolute",
+                            left: -14,
+                            top: 6,
+                            width: 3,
+                            height: 3,
+                            borderRadius: "50%",
+                            background: p.accent,
+                            display: "inline-block",
+                          }}
+                        />
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Compliance result strip */}
+        <div
+          style={{
+            marginTop: 16,
+            padding: "10px 14px",
+            borderRadius: 4,
+            border: "1px solid rgba(91,175,122,0.2)",
+            background: "rgba(91,175,122,0.06)",
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          <span style={{ fontSize: 12 }}>✓</span>
+          <span
+            style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 10,
+              color: "#5BAF7A",
+              letterSpacing: "0.08em",
+            }}
+          >
+            Passed Google Partner validation · Live on Search & Maps
+          </span>
+        </div>
+      </div>
+
+      {/* Glow */}
+      <div
+        style={{
+          height: 48,
+          background: `radial-gradient(ellipse 50% 100% at 50% 0%, ${p.accent}14, transparent)`,
+          marginTop: -1,
+          filter: "blur(6px)",
+        }}
+      />
+    </div>
+  );
+}
+
+function WipVisual({ p }: { p: typeof PROJECTS[0] }) {
+  return (
+    <div
+      style={{
+        position: "relative",
+        borderRadius: 8,
+        overflow: "hidden",
+        border: "1px solid #1E1B18",
+        background: "#0D0B09",
+        boxShadow: "0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02)",
+      }}
+    >
+      {/* Chrome bar */}
+      <div
+        style={{
+          background: "#141210",
+          padding: "10px 16px",
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          borderBottom: "1px solid #1E1B18",
+        }}
+      >
+        <div style={{ display: "flex", gap: 6 }}>
+          {["#FF5F56", "#FFBD2E", "#27C93F"].map((c) => (
+            <div
+              key={c}
+              style={{ width: 9, height: 9, borderRadius: "50%", background: c, opacity: 0.45 }}
+            />
+          ))}
+        </div>
+        <div
+          style={{
+            flex: 1,
+            background: "#0D0B09",
+            border: "1px solid #1E1B18",
+            borderRadius: 3,
+            padding: "4px 12px",
+            fontSize: 10,
+            color: "#8A7E74",
+            fontFamily: "'DM Mono', monospace",
+            textAlign: "center",
+            letterSpacing: "0.04em",
+          }}
+        >
+          qrvana.in · build log
+        </div>
+      </div>
+
+      {/* WIP content */}
+      <div style={{ padding: "24px 24px 28px" }}>
+        {/* Status */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            marginBottom: 24,
+          }}
+        >
+          <span
+            style={{
+              width: 7,
+              height: 7,
+              borderRadius: "50%",
+              background: p.accent,
+              display: "inline-block",
+              boxShadow: `0 0 8px ${p.accent}80`,
+            }}
+          />
+          <span
+            style={{
+              fontFamily: "'DM Mono', monospace",
+              fontSize: 10,
+              color: p.accent,
+              letterSpacing: "0.14em",
+              textTransform: "uppercase",
+            }}
+          >
+            Active build · shipping solo
+          </span>
+        </div>
+
+        {/* Progress bars */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+          {p.wipProgress!.map(({ label, pct }) => (
+            <div key={label}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginBottom: 6,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: 11,
+                    color: "#9A8E84",
+                    letterSpacing: "0.04em",
+                  }}
+                >
+                  {label}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: 10,
+                    color: pct >= 80 ? p.accent : "#7A6E65",
+                  }}
+                >
+                  {pct}%
+                </span>
+              </div>
+              <div
+                style={{
+                  width: "100%",
+                  height: 3,
+                  background: "#1E1B18",
+                  borderRadius: 2,
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    width: `${pct}%`,
+                    height: "100%",
+                    background:
+                      pct >= 80
+                        ? p.accent
+                        : pct >= 50
+                        ? `${p.accent}99`
+                        : `${p.accent}44`,
+                    borderRadius: 2,
+                    transition: "width 0.8s cubic-bezier(0.22,1,0.36,1)",
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Stack tags */}
+        <div
+          style={{
+            marginTop: 24,
+            paddingTop: 20,
+            borderTop: "1px solid #1E1B18",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 6,
+          }}
+        >
+          {["Next.js 15", "App Router", "Drizzle ORM", "NextAuth v5", "14-table schema", "76 components"].map(
+            (t) => (
+              <span
+                key={t}
+                style={{
+                  fontFamily: "'DM Mono', monospace",
+                  fontSize: 10,
+                  color: "#7A6E65",
+                  background: "rgba(255,255,255,0.025)",
+                  border: "1px solid #1E1B18",
+                  borderRadius: 3,
+                  padding: "3px 10px",
+                  letterSpacing: "0.04em",
+                }}
+              >
+                {t}
+              </span>
+            )
+          )}
+        </div>
+      </div>
+
+      {/* Glow */}
+      <div
+        style={{
+          height: 48,
+          background: `radial-gradient(ellipse 50% 100% at 50% 0%, ${p.accent}14, transparent)`,
+          marginTop: -1,
+          filter: "blur(6px)",
+        }}
+      />
+    </div>
+  );
+}
+
+function IframeVisual({ p }: { p: typeof PROJECTS[0] }) {
+  return (
+    <div>
+      <div
+        style={{
+          position: "relative",
+          borderRadius: 8,
+          overflow: "hidden",
+          border: "1px solid #1E1B18",
+          background: "#141210",
+          boxShadow: "0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02)",
+        }}
+      >
+        {/* Browser chrome */}
+        <div
+          style={{
+            background: "#141210",
+            padding: "10px 16px",
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            borderBottom: "1px solid #1E1B18",
+          }}
+        >
+          <div style={{ display: "flex", gap: 6 }}>
+            {["#FF5F56", "#FFBD2E", "#27C93F"].map((c) => (
+              <div
+                key={c}
+                style={{ width: 9, height: 9, borderRadius: "50%", background: c, opacity: 0.45 }}
+              />
+            ))}
+          </div>
+          <div
+            style={{
+              flex: 1,
+              background: "#0D0B09",
+              border: "1px solid #1E1B18",
+              borderRadius: 3,
+              padding: "4px 12px",
+              fontSize: 10,
+              color: "#8A7E74",
+              fontFamily: "'DM Mono', monospace",
+              textAlign: "center",
+              letterSpacing: "0.04em",
+            }}
+          >
+            {p.url.replace("https://", "").replace(/\/$/, "")}
+          </div>
+        </div>
+
+        {/* iframe */}
+        <div style={{ position: "relative", paddingTop: "62%" }}>
+          <iframe
+            src={p.url}
+            title={p.name}
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              border: "none",
+              pointerEvents: "none",
+            }}
+            loading="lazy"
+            scrolling="no"
+          />
+          <a
+            href={p.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "rgba(10,9,7,0)",
+              transition: "background 0.3s",
+              textDecoration: "none",
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "rgba(10,9,7,0.6)";
+              const span = e.currentTarget.querySelector("span") as HTMLElement;
+              if (span) { span.style.opacity = "1"; span.style.transform = "translateY(0)"; }
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLAnchorElement).style.background = "rgba(10,9,7,0)";
+              const span = e.currentTarget.querySelector("span") as HTMLElement;
+              if (span) { span.style.opacity = "0"; span.style.transform = "translateY(4px)"; }
+            }}
+          >
+            <span
+              style={{
+                opacity: 0,
+                transform: "translateY(4px)",
+                transition: "opacity 0.25s ease, transform 0.25s ease",
+                background: p.accent,
+                color: "#0D0B09",
+                padding: "10px 22px",
+                borderRadius: 3,
+                fontSize: 12,
+                fontWeight: 700,
+                fontFamily: "'DM Mono', monospace",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+              }}
+            >
+              Open Site ↗
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div
+        style={{
+          height: 48,
+          background: `radial-gradient(ellipse 50% 100% at 50% 0%, ${p.accent}14, transparent)`,
+          marginTop: -1,
+          filter: "blur(6px)",
+          transition: "background 0.6s ease",
+        }}
+      />
+    </div>
+  );
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
+
 export default function ProjectsSection() {
   const [active, setActive] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -195,7 +738,7 @@ export default function ProjectsSection() {
                   fontFamily: "'DM Serif Display', Georgia, serif",
                 }}
               >
-                "{p.headline}"
+                &ldquo;{p.headline}&rdquo;
               </p>
 
               {/* Description */}
@@ -235,7 +778,7 @@ export default function ProjectsSection() {
               {/* CTA */}
               <a
                 href={p.url}
-                target="_blank"
+                target={p.url.startsWith("http") ? "_blank" : "_self"}
                 rel="noopener noreferrer"
                 style={{
                   display: "inline-flex",
@@ -267,7 +810,7 @@ export default function ProjectsSection() {
               </a>
             </div>
 
-            {/* Right — browser mockup */}
+            {/* Right — visual panel */}
             <div
               style={{
                 opacity: contentVisible ? 1 : 0,
@@ -279,133 +822,9 @@ export default function ProjectsSection() {
                   : "opacity 0.2s ease, transform 0.2s ease",
               }}
             >
-              <div
-                style={{
-                  position: "relative",
-                  borderRadius: 8,
-                  overflow: "hidden",
-                  border: "1px solid #1E1B18",
-                  background: "#141210",
-                  boxShadow: "0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02)",
-                }}
-              >
-                {/* Browser chrome */}
-                <div
-                  style={{
-                    background: "#141210",
-                    padding: "10px 16px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 12,
-                    borderBottom: "1px solid #1E1B18",
-                  }}
-                >
-                  <div style={{ display: "flex", gap: 6 }}>
-                    {["#FF5F56", "#FFBD2E", "#27C93F"].map((c) => (
-                      <div
-                        key={c}
-                        style={{
-                          width: 9,
-                          height: 9,
-                          borderRadius: "50%",
-                          background: c,
-                          opacity: 0.45,
-                        }}
-                      />
-                    ))}
-                  </div>
-                  <div
-                    style={{
-                      flex: 1,
-                      background: "#0D0B09",
-                      border: "1px solid #1E1B18",
-                      borderRadius: 3,
-                      padding: "4px 12px",
-                      fontSize: 10,
-                      color: "#8A7E74",
-                      fontFamily: "'DM Mono', monospace",
-                      textAlign: "center",
-                      letterSpacing: "0.04em",
-                    }}
-                  >
-                    {p.url.replace("https://", "").replace(/\/$/, "")}
-                  </div>
-                </div>
-
-                {/* iframe */}
-                <div style={{ position: "relative", paddingTop: "62%" }}>
-                  <iframe
-                    src={p.url}
-                    title={p.name}
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      width: "100%",
-                      height: "100%",
-                      border: "none",
-                      pointerEvents: "none",
-                    }}
-                    loading="lazy"
-                    scrolling="no"
-                  />
-                  {/* Hover overlay */}
-                  <a
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      background: "rgba(10,9,7,0)",
-                      transition: "background 0.3s",
-                      textDecoration: "none",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.background = "rgba(10,9,7,0.6)";
-                      const span = e.currentTarget.querySelector("span") as HTMLElement;
-                      if (span) { span.style.opacity = "1"; span.style.transform = "translateY(0)"; }
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLAnchorElement).style.background = "rgba(10,9,7,0)";
-                      const span = e.currentTarget.querySelector("span") as HTMLElement;
-                      if (span) { span.style.opacity = "0"; span.style.transform = "translateY(4px)"; }
-                    }}
-                  >
-                    <span
-                      style={{
-                        opacity: 0,
-                        transform: "translateY(4px)",
-                        transition: "opacity 0.25s ease, transform 0.25s ease",
-                        background: p.accent,
-                        color: "#0D0B09",
-                        padding: "10px 22px",
-                        borderRadius: 3,
-                        fontSize: 12,
-                        fontWeight: 700,
-                        fontFamily: "'DM Mono', monospace",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      Open Site ↗
-                    </span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Glow under mockup */}
-              <div
-                style={{
-                  height: 48,
-                  background: `radial-gradient(ellipse 50% 100% at 50% 0%, ${p.accent}14, transparent)`,
-                  marginTop: -1,
-                  filter: "blur(6px)",
-                  transition: "background 0.6s ease",
-                }}
-              />
+              {p.visual === "casestudy" && <CaseStudyVisual p={p} />}
+              {p.visual === "wip"        && <WipVisual p={p} />}
+              {p.visual === "iframe"     && <IframeVisual p={p} />}
             </div>
           </div>
         </div>

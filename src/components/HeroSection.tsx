@@ -218,8 +218,9 @@ export default function HeroSection() {
             animation: "heroFade 0.7s ease 0.45s both",
           }}
         >
-          5+ years of production experience across agencies and product companies —
-          now freelancing for startups and businesses worldwide.
+          Specializing in complex third-party API integrations, scalable SaaS
+          architecture, and high-performance backend systems — built with Node.js
+          and NestJS, shipped to production.
         </p>
 
         {/* CTAs */}
@@ -235,7 +236,7 @@ export default function HeroSection() {
           {/* Primary */}
           <button
             onClick={() =>
-              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
             }
             style={{
               background: "#C8922A",
@@ -260,13 +261,13 @@ export default function HeroSection() {
               (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
             }}
           >
-            View My Work
+            Discuss a Complex Integration
           </button>
 
           {/* Secondary */}
           <button
             onClick={() =>
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
+              document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
             }
             style={{
               background: "transparent",
@@ -290,7 +291,7 @@ export default function HeroSection() {
               (e.currentTarget as HTMLButtonElement).style.color = "#B0A090";
             }}
           >
-            Get In Touch
+            View Technical Case Studies
           </button>
         </div>
 
