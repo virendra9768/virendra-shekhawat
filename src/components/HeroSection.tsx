@@ -218,9 +218,7 @@ export default function HeroSection() {
             animation: "heroFade 0.7s ease 0.45s both",
           }}
         >
-          Specializing in complex third-party API integrations, scalable SaaS
-          architecture, and high-performance backend systems — built with Node.js
-          and NestJS, shipped to production.
+          Building fast, scalable web applications from pixel-perfect interfaces to production-ready backend systems.
         </p>
 
         {/* CTAs */}
@@ -261,7 +259,7 @@ export default function HeroSection() {
               (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)";
             }}
           >
-            Discuss a Complex Integration
+            Start Your Project
           </button>
 
           {/* Secondary */}
@@ -291,7 +289,7 @@ export default function HeroSection() {
               (e.currentTarget as HTMLButtonElement).style.color = "#B0A090";
             }}
           >
-            View Technical Case Studies
+            View Selected Projects
           </button>
         </div>
 
@@ -309,9 +307,9 @@ export default function HeroSection() {
         >
           {[
             ["5+", "Years\nExperience"],
-            ["3", "Companies\nShipped At"],
-            ["10+", "Production\nAPIs Built"],
-            ["∞", "Coffee\nConsumed"],
+            ["20+", "Projects Delivered"],
+            ["10+", "Production APIs"],
+            ["100%", "Responsive Websites"],
           ].map(([num, label]) => (
             <div key={label}>
               <div

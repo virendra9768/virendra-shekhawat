@@ -249,37 +249,28 @@ const EXPERIENCE = [
     company: "Jiak Technology",
     type: "Full-time",
     location: "Singapore (Remote)",
-    role: "Full-Stack Engineer",
-    period: "2023 — 2024",
+    role: "Senior Software Engineer",
+    period: "Jun 2025 — Nov 2025",
+    detail:
+      "Refactored monolithic backend into a scalable three-layer architecture (controller–service–repository), improving separation of concerns, maintainability, and testability across the codebase."
+  },
+  {
+    company: "Dev Technosys Pvt Ltd",
+    type: "Full-time",
+    location: "Jaipur",
+    role: "Full-Stack Developer",
+    period: "Dec 2021 — May 2025",
     detail:
       "Led the Reserve with Google integration end-to-end — Google Partner onboarding, automated SFTP feed pipelines, core Booking APIs, and a real-time update engine. Also built JWT authentication from scratch and owned the PostgreSQL schema across the platform.",
   },
   {
-    company: "Dev Technosys",
+    company: "Webdunia (India) Pvt Ltd",
     type: "Full-time",
-    location: "Jaipur",
-    role: "Full-Stack Developer",
-    period: "2022 — 2023",
+    location: "Indore",
+    role: "Associate Software Engineer",
+    period: "Jun 2019 — Feb 2020",
     detail:
-      "Sole engineer on Google OAuth and Google Reserve API integrations. Built and shipped Node.js REST APIs and React frontends across multiple client projects with direct ownership of the full delivery cycle.",
-  },
-  {
-    company: "Doctolink",
-    type: "Full-time",
-    location: "Jaipur",
-    role: "Backend Developer",
-    period: "2021 — 2022",
-    detail:
-      "Engineered a concurrent multi-doctor scheduling engine with dynamic slot generation and conflict resolution. Integrated AWS S3 with pre-signed URLs and IAM-based access control for patient document storage. Stack: NestJS, MySQL, React.js.",
-  },
-  {
-    company: "Webdunia",
-    type: "Full-time",
-    location: "Jaipur",
-    role: "Junior Developer",
-    period: "2020 — 2021",
-    detail:
-      "Built and maintained client-facing web products. First production exposure to Node.js backends and React frontends at scale.",
+      "Contributed to frontend and backend development of a Net Banking Application using Angular, handling UI components, API integration, and business logic.",
   },
 ];
 
@@ -324,6 +315,9 @@ const ROLES = [
   "NestJS Specialist",
   "API Integration Architect",
   "SaaS Backend Developer",
+  "FULL STACK ENGINEER",
+  "React.js Specialist",
+  "Next.js Specialist",
 ];
 
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
